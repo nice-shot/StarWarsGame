@@ -20,17 +20,38 @@ namespace StarWars.Brains {
             }
         }
 
+		private const float ROTATION_CHANCE = 0.97f;
+		private Action turnDirection;
+
+		private void ChooseDirection() {
+			if (Random.value > 0.5) {
+				turnDirection = TurnLeft.action;
+			} else {
+				turnDirection = TurnRight.action;
+			}
+		}
+		protected void Awake() {
+			ChooseDirection ();
+		}
+
         /// <summary>
         /// The snake make sharp turns left and right and shoots whenever it can
         /// </summary>
         public override Action NextAction() {
             // Make sure to move in a stright line
             var rotation = spaceship.Rotation;
-            if (rotation % 90 > Spaceship.ROTATION_PER_ACTION) {
-                return TurnLeft.action;
-            } // If we don't need to rotate check a random to see if we need to turn
+			// Rotation is in specific degrees so we won't allways be exactly 90 degrees
+			if (rotation % 90 > Spaceship.ROTATION_PER_ACTION) {
+				return turnDirection;
+			}
 
-
+			// Checks if we should rotate
+			if (Random.value > ROTATION_CHANCE) {
+				ChooseDirection ();
+				// Initialize Rotation
+				return turnDirection;
+			}
+				
             return spaceship.CanShoot ? Shoot.action : DoNothing.action;
         }
     }

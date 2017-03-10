@@ -976,9 +976,8 @@ MonoBehaviour:
   spaceshipNames:
   - Hunter
   - Evader
-  - Evader
+  - Twister
   - Snake
-  - Player
   spaceshipBodiesPool: {fileID: 305412048}
   shotBodiesPool: {fileID: 1466009000}
   explosionEffectsPool: {fileID: 898544977}
