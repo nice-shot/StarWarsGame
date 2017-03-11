@@ -977,7 +977,8 @@ MonoBehaviour:
   - Kamikaze
   - Hunter
   - Evader
-  - Random
+  - Snake
+  - Twister
   spaceshipBodiesPool: {fileID: 305412048}
   shotBodiesPool: {fileID: 1466009000}
   explosionEffectsPool: {fileID: 898544977}
