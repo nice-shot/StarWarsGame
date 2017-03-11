@@ -64,12 +64,13 @@ public class KamikazeBrain : SpaceshipBrain {
 			if (angle >= 10) return TurnLeft.action;
 			if (angle <= -10) return TurnRight.action;
 		}
-
-//		return spaceship.CanShoot ? Shoot.action : DoNothing.action;
+			
+		// Does not shoot since it doesn't know how to differentiate
+		// it's own shots when shielding
 		return DoNothing.action;
 	}
-
-	// Raises shiled whenever a shot or spaceship is nearby
+		
+	// Raises shield whenever a shot or spaceship is nearby
 	private bool ShouldRaiseShield ()
 	{
 		var position = spaceship.Position;
