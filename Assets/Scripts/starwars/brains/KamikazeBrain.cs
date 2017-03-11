@@ -65,6 +65,7 @@ public class KamikazeBrain : SpaceshipBrain {
 			if (angle <= -10) return TurnRight.action;
 		}
 
+//		return spaceship.CanShoot ? Shoot.action : DoNothing.action;
 		return DoNothing.action;
 	}
 
@@ -77,7 +78,6 @@ public class KamikazeBrain : SpaceshipBrain {
 			// Ignore non-existing shots
 			if (!shot.IsAlive) continue;
 			if (Vector2.Distance(position, shot.Position) < DANGER_RADIUS) {
-				Debug.Log("Shot is close");
 				return true;
 			}
 		}
@@ -86,7 +86,6 @@ public class KamikazeBrain : SpaceshipBrain {
 			// Ignore self and dead ships
 			if (spaceship == ship || !ship.IsAlive) continue;
 			if (Vector2.Distance(position, ship.Position) < DANGER_RADIUS) {
-				Debug.Log(ship.Name + " is close");
 				return true;
 			}
 		}
